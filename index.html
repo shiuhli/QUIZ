@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>你的說話風格是哪一型？｜旭立心理諮商中心</title>
+<meta name="description" content="5 個生活情境，約 1 分鐘，看看你平時最常見的說話風格。旭立心理諮商中心的自我覺察小練習。">
+<meta property="og:title" content="你的說話風格是哪一型？">
+<meta property="og:description" content="5 個生活情境，約 1 分鐘，看看你平時最常見的說話風格。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FFF8F2;
+  --ink:#5B4B4B;
+  --ink-soft:#857474;
+  --pink:#FADADD;   --pink-d:#F1B8C0;
+  --mint:#D8EFE4;   --mint-d:#A9D9C2;
+  --lav:#E6DFF6;    --lav-d:#C7BAE8;
+  --butter:#FCF1CF; --butter-d:#EFD992;
+  --peach:#FDE2D0;
+  --card:#FFFFFF;
+  --shadow:0 10px 30px rgba(120,90,90,.10);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;min-height:100vh;min-height:100dvh;
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  color:var(--ink);line-height:1.7;font-size:16px;
+  background:
+    radial-gradient(420px 320px at 8% -4%, var(--pink) 0, transparent 70%),
+    radial-gradient(420px 360px at 100% 22%, var(--mint) 0, transparent 70%),
+    radial-gradient(460px 360px at 0% 100%, var(--lav) 0, transparent 70%),
+    var(--cream);
+  background-attachment:fixed;
+}
+.wrap{max-width:480px;margin:0 auto;padding:18px 16px calc(28px + env(safe-area-inset-bottom))}
+
+/* brand header */
+.brand{display:flex;align-items:center;gap:12px;padding:6px 6px 14px}
+.brand img{height:42px;width:auto;display:block}
+.brand .name{line-height:1.3}
+.brand .name small{display:block;font-size:12px;color:var(--ink-soft)}
+.brand .name strong{font-size:16px;letter-spacing:.04em}
+
+/* card */
+.card{background:var(--card);border-radius:28px;box-shadow:var(--shadow);padding:26px 22px 24px;position:relative;overflow:hidden}
+.card:focus,[data-focus]:focus{outline:none}
+h1,h2{margin:0;line-height:1.4}
+h1{font-size:25px;text-align:center;letter-spacing:.02em}
+.sub{text-align:center;color:var(--ink-soft);margin:8px 0 18px}
+.note{font-size:12.5px;color:var(--ink-soft);margin:12px 4px 0;line-height:1.7}
+.hero{display:flex;justify-content:center;margin-bottom:6px}
+.animal{width:150px;height:150px;animation:bob 3.2s ease-in-out infinite}
+.animal.sm{width:64px;height:64px;animation:none}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+/* buttons */
+.btn{
+  display:block;width:100%;text-align:center;text-decoration:none;cursor:pointer;
+  border:0;border-radius:999px;padding:13px 18px;font:inherit;font-weight:700;color:var(--ink);
+  background:var(--pink);box-shadow:0 3px 0 var(--pink-d);transition:transform .08s,box-shadow .08s;
+}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--pink-d)}
+.btn.mint{background:var(--mint);box-shadow:0 3px 0 var(--mint-d)}
+.btn.mint:active{box-shadow:0 1px 0 var(--mint-d)}
+.btn.lav{background:var(--lav);box-shadow:0 3px 0 var(--lav-d)}
+.btn.lav:active{box-shadow:0 1px 0 var(--lav-d)}
+.btn.ghost{background:transparent;box-shadow:none;border:2px solid var(--lav-d)}
+.btn:focus-visible,.opt:focus-visible,.back:focus-visible,.links a:focus-visible{outline:3px solid var(--lav-d);outline-offset:3px}
+
+/* progress */
+.progress{display:flex;gap:6px;justify-content:center;margin-bottom:14px}
+.progress i{height:8px;width:22px;border-radius:99px;background:var(--lav);transition:all .25s}
+.progress i.done{background:var(--mint-d)}
+.progress i.cur{background:var(--pink-d);width:34px}
+.qhead{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.bubble{background:var(--butter);border-radius:16px 16px 16px 4px;padding:6px 12px;font-size:13px;color:var(--ink)}
+.qno{font-size:13px;color:var(--ink-soft);margin:0 0 4px;letter-spacing:.06em}
+.stem{font-size:19px;font-weight:700;margin-bottom:16px}
+.opts{display:grid;gap:10px}
+.opt{
+  display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;
+  font:inherit;color:var(--ink);cursor:pointer;
+  border:2px solid transparent;border-radius:20px;padding:13px 14px;background:var(--c);
+  transition:transform .1s,border-color .15s;
+}
+.opt:active{transform:scale(.99)}
+.opt .dot{flex:none;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--d);margin-top:2px}
+.opt.picked{border-color:var(--d)}
+.opt.picked .dot{background:var(--d)}
+.opt:disabled{cursor:default}
+.opt:nth-child(1){--c:var(--pink);--d:var(--pink-d)}
+.opt:nth-child(2){--c:var(--mint);--d:var(--mint-d)}
+.opt:nth-child(3){--c:var(--lav);--d:var(--lav-d)}
+.back{margin-top:14px;background:none;border:0;font:inherit;color:var(--ink-soft);cursor:pointer;padding:6px 4px}
+.back[hidden]{display:none}
+
+/* result */
+.rtag{text-align:center;font-size:13px;color:var(--ink-soft);letter-spacing:.08em;margin:0}
+.rname{text-align:center;font-size:26px;margin:2px 0 8px}
+.rdesc{background:var(--cream);border-radius:18px;padding:14px 16px;margin:0 0 16px}
+.bars{display:grid;gap:8px;margin:0 0 18px}
+.bar{display:grid;grid-template-columns:92px 1fr 34px;gap:8px;align-items:center;font-size:13px}
+.bar .track{height:12px;background:var(--cream);border-radius:99px;overflow:hidden}
+.bar .fill{display:block;height:100%;border-radius:99px}
+.bar .n{text-align:right;color:var(--ink-soft)}
+.tips{margin:0 0 16px;padding:14px 16px;border-radius:18px;background:var(--butter)}
+.tips h3{margin:0 0 6px;font-size:15px}
+.tips ul{margin:0;padding-left:1.2em}
+.tips li{margin:2px 0}
+.cta{font-size:14.5px;margin:0 0 16px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* footer links */
+.links{margin-top:18px;text-align:center}
+.links p{margin:0 0 10px;font-size:13px;color:var(--ink-soft)}
+.links .row2 a{font-size:15px}
+.links .fine{font-size:12px;color:var(--ink-soft);text-align:center;margin:18px 8px 0}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);opacity:0;background:var(--ink);color:#fff;padding:8px 16px;border-radius:99px;font-size:14px;transition:all .25s;pointer-events:none}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="brand">
+    <img id="logo" src="https://www.shiuhli.org.tw/images/logo.svg" alt="旭立文教基金會圖標" onerror="this.style.display='none'">
+    <div class="name">
+      <small>財團法人旭立文教基金會附設</small>
+      <strong>旭立心理諮商中心</strong>
+    </div>
+  </header>
+
+  <main class="card" id="app" tabindex="-1"></main>
+
+  <footer class="links">
+    <p>想更了解我們，或預約心理師談談</p>
+    <div class="row2">
+      <a class="btn mint" href="https://www.shiuhli.org.tw/" target="_blank" rel="noopener">旭立官網</a>
+      <a class="btn" href="https://www.shiuhli.org.tw/counseling" target="_blank" rel="noopener">預約諮商</a>
+    </div>
+    <p class="fine">＊這是幫助自我覺察的小練習，並非標準化心理測驗，結果不能作為診斷或評估依據。</p>
+  </footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  /* ------------------------------------------------------------------
+   * 後台資料送出位置：貼上 Google Apps Script「網頁應用程式」網址（結尾 /exec）。
+   * 留空時，測驗可正常使用，但不會記錄任何資料。
+   * ------------------------------------------------------------------ */
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbyRQi790zZxeEehonV1HNW2SAu1hSy50MIDVa2N0Z7wfxIWcpqisqkvvgnsZ27nE2A/exec";
+
+  /* ---------- 題目（A=攻擊型、B=非暴力溝通、C=壓抑） ---------- */
+  const Q = [
+    { stem: "當朋友遲到了30分鐘時，你會說：",
+      o: { A: "「你怎麼總是遲到？你根本不重視我！」",
+           B: "「你遲到了，我很擔心你，是不是發生什麼事了？」",
+           C: "「唉，又遲到，算了啦，我早就習慣了。」" } },
+    { stem: "當同事犯了一個錯，你會說：",
+      o: { A: "「你怎麼可以這麼粗心？這根本就是常識啊！」",
+           B: "「你這邊好像有個地方沒注意到，要不要我們一起再檢查一下？」",
+           C: "「算了，反正不是我錯。」" } },
+    { stem: "當伴侶忘記你生日，你會：",
+      o: { A: "冷嘲熱諷地說：「哇，好記性，真是感人。」",
+           B: "坦白說：「我感到很失落，因為這一天對我很重要。」",
+           C: "（默默忍耐，什麼都不說）" } },
+    { stem: "當你感到被忽略時，你會：",
+      o: { A: "直接批評對方：「你根本只在乎你自己！」",
+           B: "表達自己的感受：「我感到難過，因為我希望被重視。」",
+           C: "（將情緒壓抑下來，轉而疏遠對方）" } },
+    { stem: "當孩子考試沒考好時，你會說：",
+      o: { A: "「你就是不夠努力，才會有這種成績！」",
+           B: "「你一定很難過，要不要一起看看是哪裡卡住了？」",
+           C: "「你自己看著辦，我已經不想管了。」" } }
+  ];
+
+  /* ---------- 動物角色（原創插畫） ---------- */
+  const INK = "#5B4B4B", BLUSH = "#F7B8BF";
+  const face = (cx, cy, gap = 17, nose = false) =>
+    `<circle cx="${cx - gap}" cy="${cy}" r="4.6" fill="${INK}"/><circle cx="${cx + gap}" cy="${cy}" r="4.6" fill="${INK}"/>` +
+    `<circle cx="${cx - gap + 1.6}" cy="${cy - 1.6}" r="1.4" fill="#fff"/><circle cx="${cx + gap + 1.6}" cy="${cy - 1.6}" r="1.4" fill="#fff"/>` +
+    `<ellipse cx="${cx - gap - 11}" cy="${cy + 9}" rx="7" ry="4.6" fill="${BLUSH}" opacity=".8"/>` +
+    `<ellipse cx="${cx + gap + 11}" cy="${cy + 9}" rx="7" ry="4.6" fill="${BLUSH}" opacity=".8"/>` +
+    (nose ? `<ellipse cx="${cx}" cy="${cy + 6}" rx="4.4" ry="3.2" fill="#7A5C5C"/>` : "") +
+    `<path d="M${cx - 5} ${cy + (nose ? 11 : 8)} Q${cx - 2.5} ${cy + (nose ? 16 : 13)} ${cx} ${cy + (nose ? 11 : 8)} Q${cx + 2.5} ${cy + (nose ? 16 : 13)} ${cx + 5} ${cy + (nose ? 11 : 8)}" fill="none" stroke="${INK}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
+  const shadow = `<ellipse cx="80" cy="153" rx="42" ry="5" fill="#000" opacity=".06"/>`;
+  const svg = (inner, cls = "animal") =>
+    `<svg class="${cls}" viewBox="0 0 160 160" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+
+  const ANIMALS = {
+    bunny: (cls) => svg(`${shadow}
+      <g transform="rotate(-9 58 74)"><ellipse cx="58" cy="42" rx="14" ry="32" fill="#FFFDFB" stroke="#EBDDD6" stroke-width="3"/><ellipse cx="58" cy="45" rx="6.5" ry="22" fill="#F9CFD6"/></g>
+      <g transform="rotate(11 102 74)"><ellipse cx="102" cy="42" rx="14" ry="32" fill="#FFFDFB" stroke="#EBDDD6" stroke-width="3"/><ellipse cx="102" cy="45" rx="6.5" ry="22" fill="#F9CFD6"/></g>
+      <ellipse cx="80" cy="106" rx="51" ry="46" fill="#FFFDFB" stroke="#EBDDD6" stroke-width="3"/>
+      ${face(80, 102, 18)}`, cls),
+    hedgehog: (cls) => svg(`${shadow}
+      <path d="M26 114 L12 94 L33 93 L22 70 L45 78 L45 53 L64 68 L72 43 L86 64 L100 45 L106 68 L124 55 L122 80 L142 73 L132 96 L149 101 L131 118 Z" fill="#C7BAE8" stroke="#B3A3DD" stroke-width="3" stroke-linejoin="round"/>
+      <circle cx="42" cy="96" r="10" fill="#FBEBDD" stroke="#EBD3C0" stroke-width="3"/><circle cx="118" cy="96" r="10" fill="#FBEBDD" stroke="#EBD3C0" stroke-width="3"/>
+      <ellipse cx="80" cy="112" rx="45" ry="39" fill="#FBEBDD" stroke="#EBD3C0" stroke-width="3"/>
+      ${face(80, 106, 18, true)}`, cls),
+    turtle: (cls) => svg(`${shadow}
+      <ellipse cx="38" cy="140" rx="15" ry="10" fill="#FCF1CF" stroke="#EFD992" stroke-width="3"/>
+      <ellipse cx="122" cy="140" rx="15" ry="10" fill="#FCF1CF" stroke="#EFD992" stroke-width="3"/>
+      <path d="M18 118 Q18 40 80 40 Q142 40 142 118 Z" fill="#BCE5D0" stroke="#92CBB0" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M64 58 L96 58 L108 78 L96 98 L64 98 L52 78 Z" fill="none" stroke="#92CBB0" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M64 58 L52 46 M96 58 L108 46 M108 78 L134 82 M52 78 L26 82" fill="none" stroke="#92CBB0" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="80" cy="122" r="31" fill="#FCF1CF" stroke="#EFD992" stroke-width="3"/>
+      ${face(80, 118, 15)}`, cls),
+    otter: (cls) => svg(`${shadow}
+      <circle cx="46" cy="60" r="12" fill="#F0BFA0"/><circle cx="46" cy="60" r="5.5" fill="#FBDCCB"/>
+      <circle cx="114" cy="60" r="12" fill="#F0BFA0"/><circle cx="114" cy="60" r="5.5" fill="#FBDCCB"/>
+      <ellipse cx="80" cy="104" rx="52" ry="46" fill="#F6CDB1" stroke="#E8B898" stroke-width="3"/>
+      <ellipse cx="80" cy="116" rx="29" ry="18" fill="#FFF4EA"/>
+      ${face(80, 98, 20, true)}
+      <ellipse cx="62" cy="140" rx="11" ry="8" fill="#E8B898"/><ellipse cx="98" cy="140" rx="11" ry="8" fill="#E8B898"/>
+      <path d="M80 152 C63 141 67 130 74 130 C78 130 80 133 80 135 C80 133 82 130 86 130 C93 130 97 141 80 152 Z" fill="${BLUSH}" stroke="#EE9BA6" stroke-width="2" stroke-linejoin="round"/>`, cls)
+  };
+
+  /* ---------- 結果文字 ---------- */
+  const RESULTS = {
+    A: { animal: "hedgehog", name: "小刺蝟",
+         desc: "你在這些情境中，比較常出現「攻擊型」語言，容易造成關係的緊張與對立。",
+         tips: ["延遲反應，先深呼吸，再回應對方。",
+                "試著把「你怎樣」轉為「我感覺⋯⋯因為我需要⋯⋯」，避免讓對方陷入防衛。"] },
+    B: { animal: "otter", name: "小水獺",
+         desc: "你的說話方式接近「非暴力溝通」風格，能清楚表達感受與需要。",
+         tips: ["繼續保持：觀察、感受、需要、請求，四個步驟可以是每次重要對話的開場。",
+                "也試著先聽，再理解對方未被滿足的需要。"] },
+    C: { animal: "turtle", name: "小烏龜",
+         desc: "你可能習慣壓抑自己的情緒，久了容易內耗，也讓關係逐漸疏遠。",
+         tips: ["練習用更具體的感受詞彙（例如：擔心、失落、期待、難過），說出內在經驗。",
+                "再進一步說出背後的需要（例如：被重視、被理解、陪伴）。"] },
+    MIX: { animal: "bunny", name: "小兔子",
+         desc: "三種選項的數量差不多，代表你會依情境與對象調整說話方式。",
+         tips: ["不同的關係裡，說話方式本來就會不太一樣。",
+                "可以留意：哪些情境下，你的話最容易變得帶刺，或是最容易吞回去？"] }
+  };
+  const BAR = {
+    A: { label: "攻擊型", color: "var(--pink-d)" },
+    B: { label: "非暴力溝通", color: "var(--mint-d)" },
+    C: { label: "壓抑", color: "var(--lav-d)" }
+  };
+  const SENTENCE = "「我觀察到⋯⋯我感覺⋯⋯因為我需要⋯⋯你願意⋯⋯嗎？」";
+
+  /* ---------- 小工具 ---------- */
+  const $ = (s, r = document) => r.querySelector(s);
+  const app = $("#app");
+  const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const rid = () => (window.crypto && crypto.randomUUID) ? crypto.randomUUID().replace(/-/g, "").slice(0, 16) : Math.random().toString(36).slice(2, 18);
+  let toastTimer;
+  const toast = (t) => { const el = $("#toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove("on"), 1800); };
+
+  let idx = 0, answers = [], orders = [], runId = "";
+
+  function paint(html) {
+    app.innerHTML = html;
+    const f = app.querySelector("[data-focus]");
+    if (f) { f.setAttribute("tabindex", "-1"); f.focus({ preventScroll: true }); }
+    window.scrollTo({ top: 0 });
+  }
+
+  /* ---------- 畫面 ---------- */
+  function start() {
+    idx = 0; answers = []; runId = rid();
+    orders = Q.map(() => shuffle(["A", "B", "C"]));
+    paint(`
+      <div class="hero">${ANIMALS.bunny()}</div>
+      <h1 data-focus>你的說話風格是哪一型？</h1>
+      <p class="sub">5 個生活情境・約 1 分鐘<br>選出你「最常見」的反應</p>
+      <button class="btn" data-act="begin">開始小練習</button>
+      <p class="note">完成後會匿名記錄各題選項，作為整體統計使用，不會蒐集姓名、聯絡方式等個人資料。</p>
+    `);
+  }
+
+  function question() {
+    const q = Q[idx];
+    const dots = Q.map((_, i) => `<i class="${i < idx ? "done" : i === idx ? "cur" : ""}"></i>`).join("");
+    const opts = orders[idx].map((t) =>
+      `<button class="opt" data-act="pick" data-t="${t}"><span class="dot"></span><span>${q.o[t]}</span></button>`).join("");
+    paint(`
+      <div class="progress" aria-hidden="true">${dots}</div>
+      <div class="qhead">${ANIMALS.bunny("animal sm")}<span class="bubble">憑直覺選就好喔</span></div>
+      <p class="qno">第 ${idx + 1} 題・共 ${Q.length} 題</p>
+      <h2 class="stem" data-focus>${q.stem}</h2>
+      <div class="opts">${opts}</div>
+      <button class="back" data-act="back" ${idx === 0 ? "hidden" : ""}>‹ 上一題</button>
+    `);
+  }
+
+  function tally() {
+    const c = { A: 0, B: 0, C: 0 };
+    answers.forEach((t) => c[t]++);
+    const max = Math.max(c.A, c.B, c.C);
+    const tops = ["A", "B", "C"].filter((k) => c[k] === max);
+    return { c, code: tops.length === 1 ? tops[0] : "MIX" };
+  }
+
+  function result() {
+    const { c, code } = tally();
+    const r = RESULTS[code];
+    send(c, code);
+    const bars = ["A", "B", "C"].map((k) =>
+      `<div class="bar"><span>${BAR[k].label}</span><span class="track"><span class="fill" style="width:${c[k] / Q.length * 100}%;background:${BAR[k].color}"></span></span><span class="n">${c[k]} 題</span></div>`).join("");
+    paint(`
+      <div class="hero">${ANIMALS[r.animal]()}</div>
+      <p class="rtag">這次你比較像</p>
+      <h1 class="rname" data-focus>${r.name}</h1>
+      <p class="rdesc">${r.desc}</p>
+      <div class="bars" aria-label="各類型題數">${bars}</div>
+      <div class="tips"><h3>給你的小練習</h3><ul>${r.tips.map((t) => `<li>${t}</li>`).join("")}<li>試著用這句話開啟重要對話：${SENTENCE}</li></ul></div>
+      <p class="cta">如果你常常話一出口就後悔，或總是把話放在心裡，歡迎預約旭立心理諮商中心，讓心理師陪你慢慢練習說出真正想說的話。</p>
+      <div class="row2">
+        <button class="btn lav" data-act="share">分享給朋友</button>
+        <button class="btn ghost" data-act="again">再玩一次</button>
+      </div>
+      <p class="note">溝通方式會隨著情境、關係與當下的心情而改變，沒有哪一種「一輩子不變」。</p>
+    `);
+  }
+
+  /* ---------- 匿名送出 ---------- */
+  function send(c, code) {
+    if (!ENDPOINT) return; // 尚未設定後台網址時，不記錄資料
+    const payload = { id: runId, answers: answers.join(""), a: c.A, b: c.B, c: c.C, result: code };
+    try {
+      fetch(ENDPOINT, { method: "POST", mode: "no-cors", keepalive: true,
+        headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload) }).catch(() => {});
+    } catch (e) { /* 不影響使用者看到結果 */ }
+  }
+
+  async function share() {
+    const data = { title: document.title, text: "來測測你的說話風格是哪一型吧！", url: location.href };
+    try {
+      if (navigator.share) await navigator.share(data);
+      else { await navigator.clipboard.writeText(location.href); toast("已複製連結"); }
+    } catch (e) { /* 使用者取消分享 */ }
+  }
+
+  /* ---------- 事件 ---------- */
+  app.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-act]");
+    if (!b) return;
+    const act = b.dataset.act;
+    if (act === "begin") question();
+    else if (act === "again") start();
+    else if (act === "share") share();
+    else if (act === "back") { if (idx > 0) { idx--; answers.pop(); question(); } }
+    else if (act === "pick") {
+      app.querySelectorAll(".opt").forEach((o) => (o.disabled = true));
+      b.classList.add("picked");
+      answers[idx] = b.dataset.t;
+      setTimeout(() => { idx++; idx < Q.length ? question() : result(); }, 280);
+    }
+  });
+
+  start();
+})();
+</script>
+</body>
+</html>
