@@ -115,6 +115,33 @@ h1{font-size:25px;text-align:center;letter-spacing:.02em}
 .cta{font-size:14.5px;margin:0 0 16px}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
+/* 四種類型一覽 */
+.animal.md{width:84px;height:84px;animation:none}
+.types{margin:0 0 18px}
+.types h3{margin:0 0 2px;font-size:16px;text-align:center}
+.types .lead{margin:0 0 12px;text-align:center;font-size:13px;color:var(--ink-soft)}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tcard{display:flex;flex-direction:column;align-items:center;text-align:center;border-radius:20px;padding:12px 10px;background:var(--c);border:2px solid transparent}
+.tcard.me{border-color:var(--d)}
+.tcard .you{display:inline-block;font-size:11px;line-height:1.6;background:#fff;border-radius:99px;padding:0 9px;margin:2px 0 0}
+.tcard b{display:block;font-size:16px;margin-top:2px}
+.tcard .tag{display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px}
+.tcard p{margin:0;font-size:12.5px;line-height:1.65;text-align:left}
+.t-A{--c:var(--pink);--d:var(--pink-d)}
+.t-B{--c:var(--mint);--d:var(--mint-d)}
+.t-C{--c:var(--lav);--d:var(--lav-d)}
+.t-MIX{--c:var(--butter);--d:var(--butter-d)}
+
+/* 分享 */
+.share{margin:0 0 14px}
+.share h3{margin:0 0 8px;font-size:15px;text-align:center}
+.btn.sm{padding:10px 12px;font-size:15px}
+.linkbox{display:flex;gap:8px;margin-top:10px}
+.linkbox input{flex:1;min-width:0;font:inherit;font-size:13px;padding:9px 14px;border-radius:99px;border:2px solid var(--lav);background:var(--cream);color:var(--ink)}
+.linkbox .btn{flex:none;width:auto;padding:9px 18px}
+.share .more{margin-top:10px}
+.again{margin-top:4px}
+
 /* footer links */
 .links{margin-top:18px;text-align:center}
 .links p{margin:0 0 10px;font-size:13px;color:var(--ink-soft)}
@@ -258,7 +285,7 @@ h1{font-size:25px;text-align:center;letter-spacing:.02em}
   const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const rid = () => (window.crypto && crypto.randomUUID) ? crypto.randomUUID().replace(/-/g, "").slice(0, 16) : Math.random().toString(36).slice(2, 18);
   let toastTimer;
-  const toast = (t) => { const el = $("#toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove("on"), 1800); };
+  const toast = (t) => { const el = $("#toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove("on"), 2600); };
 
   let idx = 0, answers = [], orders = [], runId = "";
 
@@ -318,13 +345,46 @@ h1{font-size:25px;text-align:center;letter-spacing:.02em}
       <p class="rdesc">${r.desc}</p>
       <div class="bars" aria-label="各類型題數">${bars}</div>
       <div class="tips"><h3>給你的小練習</h3><ul>${r.tips.map((t) => `<li>${t}</li>`).join("")}<li>試著用這句話開啟重要對話：${SENTENCE}</li></ul></div>
+      ${gallery(code)}
       <p class="cta">如果你常常話一出口就後悔，或總是把話放在心裡，歡迎預約旭立心理諮商中心，讓心理師陪你慢慢練習說出真正想說的話。</p>
-      <div class="row2">
-        <button class="btn lav" data-act="share">分享給朋友</button>
-        <button class="btn ghost" data-act="again">再玩一次</button>
-      </div>
+      ${shareBlock()}
+      <button class="btn ghost again" data-act="again">再玩一次</button>
       <p class="note">溝通方式會隨著情境、關係與當下的心情而改變，沒有哪一種「一輩子不變」。</p>
     `);
+  }
+
+  /* 四種類型一覽（標出這次的結果） */
+  const TYPES = [
+    { k: "A", tag: "攻擊型語言" },
+    { k: "B", tag: "非暴力溝通" },
+    { k: "C", tag: "壓抑情緒" },
+    { k: "MIX", tag: "依情境切換" }
+  ];
+  function gallery(me) {
+    const cards = TYPES.map((t) => {
+      const r = RESULTS[t.k];
+      return `<div class="tcard t-${t.k}${t.k === me ? " me" : ""}">${ANIMALS[r.animal]("animal md")}` +
+        (t.k === me ? `<span class="you">這次的你</span>` : "") +
+        `<b>${r.name}</b><span class="tag">${t.tag}</span><p>${r.desc}</p></div>`;
+    }).join("");
+    return `<div class="types"><h3>四種說話風格，一次看</h3><p class="lead">你的朋友，可能是另一種喔</p><div class="tgrid">${cards}</div></div>`;
+  }
+
+  /* 分享區：LINE、Facebook 用一般連結（不需要任何瀏覽器權限），另有可手動複製的網址框 */
+  const SHARE_TEXT = "來測測你的說話風格是哪一型吧！5 個情境、約 1 分鐘。";
+  const shareUrl = () => /^https?:/.test(location.href) ? location.origin + location.pathname : location.href;
+  function shareBlock() {
+    const u = encodeURIComponent(shareUrl());
+    const line = `https://social-plugins.line.me/lineit/share?url=${u}`;
+    const fb = `https://www.facebook.com/sharer/sharer.php?u=${u}`;
+    const more = navigator.share ? `<button class="btn ghost sm more" style="width:100%" data-act="native">用其他 App 分享</button>` : "";
+    return `<div class="share"><h3>分享給朋友，看看他是哪一型</h3>
+      <div class="row2">
+        <a class="btn mint sm" href="${line}" target="_blank" rel="noopener">傳到 LINE</a>
+        <a class="btn lav sm" href="${fb}" target="_blank" rel="noopener">分享到 Facebook</a>
+      </div>
+      <div class="linkbox"><input id="shareUrl" type="text" readonly value="${shareUrl()}" aria-label="測驗網址"><button class="btn sm" data-act="copy">複製</button></div>
+      ${more}</div>`;
   }
 
   /* ---------- 匿名送出 ---------- */
@@ -337,12 +397,22 @@ h1{font-size:25px;text-align:center;letter-spacing:.02em}
     } catch (e) { /* 不影響使用者看到結果 */ }
   }
 
-  async function share() {
-    const data = { title: document.title, text: "來測測你的說話風格是哪一型吧！", url: location.href };
+  /* 複製網址：依序嘗試三種方法，無論成功與否都會給使用者明確回應 */
+  async function copyLink() {
+    const url = shareUrl();
+    const box = $("#shareUrl");
+    try { await navigator.clipboard.writeText(url); toast("已複製連結"); return; } catch (e) { /* 改試下一種 */ }
     try {
-      if (navigator.share) await navigator.share(data);
-      else { await navigator.clipboard.writeText(location.href); toast("已複製連結"); }
-    } catch (e) { /* 使用者取消分享 */ }
+      if (box) { box.focus(); box.select(); box.setSelectionRange(0, url.length); }
+      if (document.execCommand("copy")) { toast("已複製連結"); return; }
+    } catch (e) { /* 改請使用者手動複製 */ }
+    if (box) { box.focus(); box.select(); }
+    toast("請手動複製上方的網址");
+  }
+
+  async function nativeShare() {
+    try { await navigator.share({ title: document.title, text: SHARE_TEXT, url: shareUrl() }); }
+    catch (e) { if (!e || e.name !== "AbortError") toast("無法開啟分享，請改用上方的連結或複製"); }
   }
 
   /* ---------- 事件 ---------- */
@@ -352,7 +422,8 @@ h1{font-size:25px;text-align:center;letter-spacing:.02em}
     const act = b.dataset.act;
     if (act === "begin") question();
     else if (act === "again") start();
-    else if (act === "share") share();
+    else if (act === "copy") copyLink();
+    else if (act === "native") nativeShare();
     else if (act === "back") { if (idx > 0) { idx--; answers.pop(); question(); } }
     else if (act === "pick") {
       app.querySelectorAll(".opt").forEach((o) => (o.disabled = true));
